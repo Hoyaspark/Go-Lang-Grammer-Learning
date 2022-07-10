@@ -8,5 +8,15 @@ func main() {
 	//sliceAppend()
 	//makeSlice()
 	//sliceMemoryShare()
-	conflictSlice()
+	//conflictSlice()
+	//arrayToSlice()
+	//deepCopySlice()
+	//stringSlice()
+
+	//createMap()
+	//findMap()
+	//deleteMap()
+
+	//basicStruct()
+	anonymousStruct()
 }
