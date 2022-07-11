@@ -20,12 +20,16 @@ func main() {
 
 	defer f.Close()
 
+	defer func() {
+		callMessage()
+	}()
+
 	b := make([]byte, 128)
 
 	for {
-		_, err := f.Read(b)
+		count, err := f.Read(b)
 
-		os.Stdout.Write(b)
+		os.Stdout.Write(b[:count])
 
 		if err != nil {
 			if err == io.EOF {
@@ -35,9 +39,6 @@ func main() {
 		}
 	}
 
-	defer func() {
-		callMessage()
-	}()
 }
 
 func callMessage() {

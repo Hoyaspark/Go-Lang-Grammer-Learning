@@ -38,6 +38,17 @@ func main() {
 	updateStruct(&p)
 	fmt.Println(p)
 
+	m := map[string]string{"hello": "gello"}
+
+	mapHasPointer(m)
+
+	fmt.Println(m)
+
+	s := []string{"hello"}
+
+	sliceHasPointer(s)
+	fmt.Println(s)
+
 }
 
 func failedUpdateStruct(arg per) {
@@ -60,4 +71,12 @@ func failedUpdate(g *int) {
 
 func getString(str string) *string {
 	return &str
+}
+
+func mapHasPointer(m map[string]string) {
+	m["hello"] = "change"
+}
+
+func sliceHasPointer(s []string) {
+	s[0] = "change"
 }
