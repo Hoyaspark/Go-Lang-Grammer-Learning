@@ -162,3 +162,12 @@ func stringSlice() {
 	fmt.Println(reflect.TypeOf(b))
 
 }
+
+func test() {
+	x := []int{1, 2, 3}
+	y := make([]int, 0, 5)
+
+	z := append(y, x...)
+
+	fmt.Println(z)
+}

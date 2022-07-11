@@ -19,5 +19,6 @@ func main() {
 
 	//basicStruct()
 	//anonymousStruct()
-	getFor()
+	//getFor()
+	test()
 }
