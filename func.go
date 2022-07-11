@@ -7,6 +7,13 @@ import (
 	"reflect"
 )
 
+type opFunc func(int, int) int
+
+type a struct {
+}
+
+type bb []int
+
 func main() {
 	a := addTo(1, 2, 3, 4, 5, 6, 7, 8, 9)
 
@@ -39,6 +46,21 @@ func main() {
 
 	fmt.Println(r, e)
 
+	fmt.Println(mapToFunc(1, 2, '+'))
+	fmt.Println(mapToFunc(1, 2, '-'))
+	fmt.Println(mapToFunc(1, 2, '*'))
+	fmt.Println(mapToFunc(1, 2, '/'))
+
+	g := struct {
+		name string
+		age  int
+	}{
+		name: "pedro",
+		age:  18,
+	}
+
+	fmt.Println(g)
+
 }
 
 // 가변 파라미터는 slice 로 변환된다
@@ -70,4 +92,40 @@ func checkErr(err error) {
 // 빈 반환은 좋지 않다..
 func availableTypeName(a, b int) (result int, err error) {
 	return
+}
+
+func add(i, j int) int {
+	return i + j
+}
+
+func sub(i, j int) int {
+	return i - j
+}
+
+func mul(i, j int) int {
+	return i * j
+}
+
+func div(i, j int) int {
+	return i / j
+}
+
+func mapToFunc(i, j int, k rune) int {
+	opMap := map[rune]func(int, int) int{
+		'+': add,
+		'-': sub,
+		'*': mul,
+		'/': div,
+	}
+
+	return opMap[k](i, j)
+}
+
+func anonymousFunc() {
+	for i := 0; i < 5; i++ {
+		// j에 i를 넘겨준다
+		func(j int) {
+
+		}(i)
+	}
 }

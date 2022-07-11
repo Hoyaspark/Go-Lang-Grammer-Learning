@@ -1,5 +1,7 @@
 package main
 
+import "fmt"
+
 func main() {
 	//array()
 	//slice()
@@ -20,5 +22,14 @@ func main() {
 	//basicStruct()
 	//anonymousStruct()
 	//getFor()
-	test()
+	//test()
+	hello()
+}
+
+func hello() {
+	var result []string
+
+	result = append(result, "abcd")
+
+	fmt.Println(result, len(result), cap(result))
 }

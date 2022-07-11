@@ -13,6 +13,10 @@ func createMap() {
 func findMap() {
 	m := make(map[string]string)
 
+	defer func() int {
+		return 1
+	}()
+
 	m["name"] = "pedro"
 
 	// if present exists is true
