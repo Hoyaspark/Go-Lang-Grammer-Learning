@@ -1,6 +1,8 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+)
 
 func createMap() {
 	m := make(map[string]string, 5)
@@ -40,5 +42,23 @@ func deleteMap() {
 
 	if v, e := m["age"]; e {
 		fmt.Println(v)
+	}
+}
+
+func getFor() {
+	m := make(map[string]string)
+
+	m["name"] = "pedro"
+
+	for key, value := range m {
+		fmt.Println(key, value)
+	}
+
+	a := make([]int, 0, 5)
+
+	a = append(a, 2)
+
+	for index, value := range a {
+		fmt.Println(index, value)
 	}
 }

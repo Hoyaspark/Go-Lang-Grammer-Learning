@@ -18,5 +18,6 @@ func main() {
 	//deleteMap()
 
 	//basicStruct()
-	anonymousStruct()
+	//anonymousStruct()
+	getFor()
 }
