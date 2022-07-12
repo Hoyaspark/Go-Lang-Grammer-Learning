@@ -20,9 +20,8 @@ func main() {
 	}
 
 	sort.Slice(people, func(i, j int) bool {
-		return people[j].Age < people[i].Age
+		return people[i].Age < people[j].Age
 	})
-
 	fmt.Println(people)
 
 }
