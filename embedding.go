@@ -15,23 +15,33 @@ type Manager struct {
 
 type inta int8
 
+type Inner struct {
+	A int
+}
+
+func (I Inner) IntPrinter(val int) string {
+	return fmt.Sprintf("Inner : %d\n", val)
+}
+
+func (I Inner) Double() string {
+	return I.IntPrinter(I.A * 2)
+}
+
+type Outer struct {
+	Inner
+	S string
+}
+
+func (o Outer) IntPrinter(val int) string {
+	return fmt.Sprintf("Outer : %d\n", val)
+}
+
 func main() {
-
-	var s []Employee
-
-	s = append(s, Employee{
-		name: "sangho",
-		id:   "dklfjdlfkjdflk",
-	})
-
-	m := Manager{
-		inta: 3,
-		Employee: Employee{
-			name: "pedro",
-			id:   "hello",
-		},
-		reports: s,
+	o := Outer{
+		Inner{A: 10},
+		"Hello",
 	}
 
-	fmt.Println(m)
+	fmt.Println(o.Double())
+
 }
