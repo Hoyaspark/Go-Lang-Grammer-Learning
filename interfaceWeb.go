@@ -4,6 +4,7 @@ import (
 	"errors"
 	"fmt"
 	"net/http"
+	"time"
 )
 
 func LogOutput(message string) {
@@ -93,19 +94,22 @@ type Controller struct {
 }
 
 func (c Controller) HandleGreeting(w http.ResponseWriter, r *http.Request) {
-	c.l.Log("In SayHello")
+	go func() {
+		c.l.Log("In SayHello")
 
-	userId := r.URL.Query().Get("user_id")
-	message, err := c.lg.SayHello(userId)
-	fmt.Println(userId, err)
+		time.Sleep(time.Second * 10)
+		userId := r.URL.Query().Get("user_id")
+		message, err := c.lg.SayHello(userId)
+		fmt.Println(userId, err)
 
-	if err != nil {
-		w.WriteHeader(http.StatusBadRequest)
-		w.Write([]byte(err.Error()))
-		return
-	}
+		if err != nil {
+			w.WriteHeader(http.StatusBadRequest)
+			w.Write([]byte(err.Error()))
+			return
+		}
 
-	w.Write([]byte(message))
+		w.Write([]byte(message))
+	}()
 }
 
 func NewController(l Logger, lg logic) *Controller {

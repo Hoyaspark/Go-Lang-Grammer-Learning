@@ -1,18 +1,21 @@
 package main
 
 func main() {
-	runThing(make(chan int), make(chan int))
+	//for i := range countTo(10) {
+	//	fmt.Println(i)
+	//}
+
 }
 
-func process(val int) int {
-	return 3
-}
+func countTo(max int) <-chan int {
+	ch := make(chan int)
 
-func runThing(in <-chan int, out chan<- int) {
 	go func() {
-		for val := range in {
-			result := process(val)
-			out <- result
+		defer close(ch)
+		for i := 0; i < max; i++ {
+			ch <- i
 		}
 	}()
+
+	return ch
 }
