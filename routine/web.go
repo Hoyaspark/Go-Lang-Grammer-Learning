@@ -5,7 +5,6 @@ import (
 	"log"
 	"net"
 	"net/http"
-	"time"
 )
 
 func main() {
@@ -23,6 +22,5 @@ func main() {
 }
 
 func hello(w http.ResponseWriter, r *http.Request) {
-	time.Sleep(time.Second * 5)
 	w.Write([]byte("hello,worlds"))
 }
