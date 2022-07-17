@@ -1,4 +1,6 @@
-# Go 언어 정복기 - Learning Go
+<img alt="Go" src ="https://simpleicons.org/icons/go.svg"/>
+
+# Go 정복기 - Learning Go
 
 ## 목표
 Go 언어의 모든것을 뜯어보고 사용해보자
