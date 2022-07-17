@@ -22,6 +22,7 @@ func callBoth(ctx context.Context, errVal, slowURL, fastURL string) {
 		defer wg.Done()
 		err := callServer(ctx, "slow", slowURL)
 		if err != nil {
+			fmt.Println("slow context cancled()")
 			cancel()
 		}
 	}()
@@ -30,6 +31,7 @@ func callBoth(ctx context.Context, errVal, slowURL, fastURL string) {
 		defer wg.Done()
 		err := callServer(ctx, "fast", fastURL+"?error="+errVal)
 		if err != nil {
+			fmt.Println("fast context cancled()")
 			cancel()
 		}
 	}()
@@ -49,14 +51,14 @@ func callServer(ctx context.Context, label, url string) error {
 	res, err := client.Do(req)
 
 	if err != nil {
-		fmt.Println(label, "request err:", err)
+		fmt.Println(label, "request err1:", err)
 		return err
 	}
 
 	data, err := ioutil.ReadAll(res.Body)
 
 	if err != nil {
-		fmt.Println(label, "request err:", err)
+		fmt.Println(label, "request err2:", err)
 		return err
 	}
 
